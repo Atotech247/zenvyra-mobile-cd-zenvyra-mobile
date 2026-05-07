@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO Meta -->
+  <title>Zenvyra Farms | Fresh Eggs Supplier</title>
+  <meta name="description" content="Buy fresh, healthy eggs from Zenvyra Farms. Affordable prices, reliable supply, and fast delivery." />
+  <meta name="keywords" content="fresh eggs, poultry farm, buy eggs, Zenvyra Farms" />
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:title" content="Zenvyra Farms - Fresh Eggs" />
+  <meta property="og:description" content="Order fresh eggs directly from our farm." />
+  <meta property="og:type" content="website" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+  <!-- Hero -->
+  <section class="bg-green-700 text-white py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Fresh Eggs, Delivered Daily</h1>
+      <p class="text-base md:text-lg mb-6">Healthy, hygienic, and affordable eggs from Zenvyra Farms.</p>
+      <a href="#order" class="bg-yellow-400 text-black px-5 py-3 rounded-full font-semibold">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="bg-gray-100 py-12 md:py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8">Our Products</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="font-semibold">Crate (30 eggs)</h3>
+          <p class="font-bold">$10</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="font-semibold">Half Crate</h3>
+          <p class="font-bold">$6</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="font-semibold">Retail Pack</h3>
+          <p class="font-bold">$3</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section id="order" class="py-12 md:py-16">
+    <div class="max-w-xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Place Order</h2>
+
+      <form id="orderForm" class="grid gap-3">
+        <input type="text" id="name" placeholder="Name" class="border p-3 rounded" required />
+        <input type="email" id="email" placeholder="Email" class="border p-3 rounded" required />
+
+        <select id="product" class="border p-3 rounded">
+          <option value="10">Crate - $10</option>
+          <option value="6">Half Crate - $6</option>
+          <option value="3">Retail Pack - $3</option>
+        </select>
+
+        <input type="number" id="quantity" placeholder="Quantity" min="1" class="border p-3 rounded" required />
+
+        <select id="paymentMethod" class="border p-3 rounded">
+          <option>Pay on Delivery</option>
+          <option>Paystack</option>
+          <option>Stripe</option>
+        </select>
+
+        <button class="bg-green-700 text-white py-3 rounded font-semibold">Checkout</button>
+      </form>
+
+      <p id="confirmation" class="hidden text-center mt-4 text-green-700"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-4 text-center text-sm">
+    <p>© 2026 Zenvyra Farms</p>
+  </footer>
+
+  <!-- Optimized Script -->
+  <script>
+    const form = document.getElementById('orderForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const price = parseFloat(document.getElementById('product').value);
+      const qty = parseInt(document.getElementById('quantity').value);
+      const total = price * qty;
+      const payment = document.getElementById('paymentMethod').value;
+
+      const msg = `Total: $${total} | Payment: ${payment}`;
+      const confirmBox = document.getElementById('confirmation');
+
+      confirmBox.textContent = msg;
+      confirmBox.classList.remove('hidden');
+
+      if (payment !== 'Pay on Delivery') {
+        alert('Secure payment integration required (Paystack/Stripe).');
+      }
+    });
+  </script>
+
+  <!-- Basic Schema Markup (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zenvyra Farms",
+    "description": "Fresh egg supplier",
+    "url": "https://yourdomain.com"
+  }
+  </script>
+
+</body>
+</html>
